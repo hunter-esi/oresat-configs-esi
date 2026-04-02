@@ -1,0 +1,35 @@
+std_objects:
+  - sdo_client_parameter
+  - cob_id_sync
+  - communication_cycle_period
+  - consumer_heartbeat_time
+  
+objects:
+  - index: 0x4000
+    name: sdr_power
+    data_type: uint8
+    value_descriptions:
+      'off': 0
+      boot: 1
+      standby: 2
+      error: 0xff
+
+  - index: 0x4001
+    name: sdr_status
+    data_type: uint8
+
+  - index: 0x4002
+    name: tx_data
+    data_type: octet_str
+    description: data to be transmitted.
+    access_type: rw
+
+
+tpdos:
+  - num: 1
+    fields:
+      - [sdr_status]
+    event_timer_ms: 10000
+
+fram:
+  - [edl, tx_data]

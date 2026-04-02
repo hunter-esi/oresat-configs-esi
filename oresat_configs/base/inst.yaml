@@ -1,0 +1,82 @@
+std_objects:
+  - sdo_client_parameter
+  - cob_id_sync
+  - communication_cycle_period
+  - consumer_heartbeat_time
+  
+objects:
+  - index: 0x4000
+    name: new_data
+    data_type: uint8
+    access_type: rw
+
+  - index: 0x4001
+    name: power
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: ocxo
+        data_type: uint8
+        access_type: rw
+
+      - subindex: 0x2
+        name: picozed
+        data_type: uint8
+        access_type: rw
+
+      - subindex: 0x3
+        name: septentrio
+        data_type: uint8
+        access_type: rw
+
+  - index: 0x4002
+    name: kb_400
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: data
+        data_type: octet_str
+        access_type: ro
+      - subindex: 0x2
+        name: name
+        data_type: str
+        access_type: ro
+
+
+  - index: 0x4003
+    name: kb_100_1
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: data
+        data_type: octet_str
+        access_type: ro
+      - subindex: 0x2
+        name: name
+        data_type: str
+        access_type: ro
+
+
+  - index: 0x4004
+    name: 100kb_2
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: data
+        data_type: octet_str
+        access_type: ro
+      - subindex: 0x2
+        name: name
+        data_type: str
+        access_type: ro
+
+
+tpdos:
+  - num: 1
+    fields:
+      - [new_data]
+    event_timer_ms: 10000
+
+fram:
+  - [400kb, data]
+  - [400kb, name]
