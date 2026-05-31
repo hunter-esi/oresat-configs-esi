@@ -3,7 +3,7 @@ std_objects:
   - cob_id_sync
   - communication_cycle_period
   - consumer_heartbeat_time
-  
+
 objects:
   - index: 0x4000
     name: sdr_power
