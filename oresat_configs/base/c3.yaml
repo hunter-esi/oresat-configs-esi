@@ -754,7 +754,7 @@ objects:
     description: unix time of the associated gps data.
     generate_subindexes:
       subindexes: fixed_length
-      name: unix_time
+      name: time
       length: 32
       data_type: int32
       description: gps data timestamp
