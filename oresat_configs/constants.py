@@ -56,13 +56,13 @@ class Mission(MissionConsts, Enum):
     ORESAT0 = 1, "0", oresat0
     ORESAT0_5 = 2, "0.5", oresat0_5
     ORESAT1 = 3, "1", oresat1
-	SENTINEL = 100, "SENTINEL", sentinel
+    SENTINEL = 100, "sentinel", sentinel
 
     def __str__(self) -> str:
-		if self.arg < 100:
-        	return "OreSat" + self.arg
-		else:
-			return self.arg
+        if self.id < 100:
+            return "OreSat" + self.arg
+        else:
+            return self.arg
 
     def filename(self) -> str:
         """Returns a string safe to use in filenames and other restricted settings.

@@ -19,10 +19,6 @@ fields:
   - [system, unix_time]
   - [system, power_cycles]
   - [system, storage_percent]
-  - [lband, rx_bytes]
-  - [lband, rx_packets]
-  - [lband, rssi]
-  - [lband, synth_relock_count]
   - [uhf, rx_bytes]
   - [uhf, rx_packets]
   - [uhf, rssi]
@@ -209,7 +205,7 @@ fields:
   # star_tracker_1
   - [star_tracker_1, system_storage_percent]
   - [star_tracker_1, status]
-  # gps
+  # gps TODO: utc + ecef pos + ecef vel
   - [gps, system_storage_percent]
   - [gps, status]
   - [gps, skytraq_number_of_sv]
