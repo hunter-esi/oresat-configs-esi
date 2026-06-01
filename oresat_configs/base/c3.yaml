@@ -640,6 +640,131 @@ objects:
         access_type: ro
         default: "{}"
 
+  - index: 0x400f
+    name: mdb
+    object_type: record
+    description: Interim mission database information. Should be replaced by a complete implementation later.
+    subindexes:
+      - subindex: 0x1
+        name: refresh_delay
+        data_type: uint16
+        description: how many whole seconds to wait before attempting to store the current data.
+        access_type: rw
+        default: 108  # 50 datapoints per 90 minute orbit.
+      - subindex: 0x2
+        name: data_per_file
+        data_type: uint16
+        description: how many gps positions to store in each file.
+        access_type: rw
+        default: 50
+      - subindex: 0x3
+        name: max_num_files
+        data_type: uint16
+        description: how many whole seconds to wait before attempting to store the current data.
+        access_type: rw
+        default: 105 # ~7 days
+
+  - index: 0x4010
+    name: hist_ecef_x
+    object_type: array
+    description: historical gps x coordinate in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_x
+      length: 32
+      data_type: int32
+      description: ecef x coordinate
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4011
+    name: hist_ecef_y
+    object_type: array
+    description: historical gps y coordinate in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_y
+      length: 32
+      data_type: int32
+      description: ecef y coordinate
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4012
+    name: hist_ecef_z
+    object_type: array
+    description: historical gps z coordinate in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_z
+      length: 32
+      data_type: int32
+      description: ecef z coordinate
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4013
+    name: hist_ecef_vx
+    object_type: array
+    description: historical gps x velocity in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_vx
+      length: 32
+      data_type: int32
+      description: ecef x velocity
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4014
+    name: hist_ecef_vy
+    object_type: array
+    description: historical gps y velocity in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_vy
+      length: 32
+      data_type: int32
+      description: ecef y velocity
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4015
+    name: hist_ecef_vz
+    object_type: array
+    description: historical gps z velocity in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_vz
+      length: 32
+      data_type: int32
+      description: ecef z velocity
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4016
+    name: hist_unix_time
+    object_type: array
+    description: unix time of the associated gps data.
+    generate_subindexes:
+      subindexes: fixed_length
+      name: unix_time
+      length: 32
+      data_type: int32
+      description: gps data timestamp
+      access_type: ro
+      unit: s
+
+
+
+
+
 tpdos:
   - num: 1  # time sync TPDO
     fields:

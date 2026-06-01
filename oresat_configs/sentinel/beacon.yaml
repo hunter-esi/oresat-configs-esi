@@ -76,10 +76,8 @@ fields:
   - [solar_12, output_power_avg]
   - [solar_12, output_power_max]
   # star_tracker_1
-  - [star_tracker_1, system_storage_percent]
   - [star_tracker_1, status]
-  # gps TODO: utc + ecef pos + ecef vel
-  - [gps, system_storage_percent]
+  # gps
   - [gps, status]
   - [gps, skytraq_number_of_sv]
   - [gps, skytraq_fix_mode]
@@ -87,3 +85,6 @@ fields:
   - [adcs, gyroscope_roll_rate]
   - [adcs, gyroscope_pitch_rate]
   - [adcs, gyroscope_yaw_rate]
+  # solar_12
+  - [solar_12, output_power_avg]
+  - [solar_12, output_power_max]

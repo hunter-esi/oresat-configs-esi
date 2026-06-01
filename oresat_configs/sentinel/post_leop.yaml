@@ -68,7 +68,7 @@ fields:
   - [battery_1, pack_2_reported_state_of_charge]
   - [battery_1, pack_2_full_capacity]
   - [battery_1, pack_2_reported_capacity]
-  # battery_1
+  # battery_2
   - [battery_2, pack_1_vbatt]
   - [battery_2, pack_1_vcell]
   - [battery_2, pack_1_vcell_max]
