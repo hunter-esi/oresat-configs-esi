@@ -19,7 +19,6 @@ fields:
   - [system, uptime]
   - [system, unix_time]
   - [system, power_cycles]
-  - [system, storage_percent]
   - [uhf, rx_bytes]
   - [uhf, rx_packets]
   - [uhf, rssi]
@@ -45,7 +44,6 @@ fields:
   - [battery_2, pack_2_temperature]
   # solar_1
   - [solar_1, output_power_avg]
-  - [solar_1, output_power_max]
   # solar_2
   - [solar_2, output_power_avg]
   - [solar_2, output_power_max]
@@ -54,7 +52,6 @@ fields:
   - [solar_3, output_power_max]
   # solar_4
   - [solar_4, output_power_avg]
-  - [solar_4, output_power_max]
   # solar_5
   - [solar_5, output_power_avg]
   - [solar_5, output_power_max]
@@ -63,7 +60,6 @@ fields:
   - [solar_6, output_power_max]
   # solar_7
   - [solar_7, output_power_avg]
-  - [solar_7, output_power_max]
   # solar_8
   - [solar_8, output_power_avg]
   - [solar_8, output_power_max]
@@ -72,7 +68,6 @@ fields:
   - [solar_9, output_power_max]
   # solar_10
   - [solar_10, output_power_avg]
-  - [solar_10, output_power_max]
   # solar_11
   - [solar_11, output_power_avg]
   - [solar_11, output_power_max]
@@ -83,7 +78,6 @@ fields:
   - [star_tracker_1, status]
   # gps
   - [gps, status]
-  - [gps, skytraq_number_of_sv]
   - [gps, skytraq_fix_mode]
   # adcs
   - [adcs, gyroscope_roll_rate]

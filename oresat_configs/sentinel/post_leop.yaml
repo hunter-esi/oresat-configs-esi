@@ -223,8 +223,5 @@ fields:
   - [adcs, gyroscope_pitch_rate]
   - [adcs, gyroscope_yaw_rate]
   - [adcs, magnetorquer_current_x]
-  - [adcs, magnetorquer_current_x_setpoint]
   - [adcs, magnetorquer_current_y]
-  - [adcs, magnetorquer_current_y_setpoint]
   - [adcs, magnetorquer_current_z]
-  - [adcs, magnetorquer_current_z_setpoint]
