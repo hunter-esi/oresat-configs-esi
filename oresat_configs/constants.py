@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from types import ModuleType
 
-from . import oresat0, oresat0_5, oresat1
+from . import oresat0, oresat0_5, oresat1, sentinel
 
 __all__ = [
     "Mission",
@@ -56,9 +56,13 @@ class Mission(MissionConsts, Enum):
     ORESAT0 = 1, "0", oresat0
     ORESAT0_5 = 2, "0.5", oresat0_5
     ORESAT1 = 3, "1", oresat1
+    SENTINEL = 100, "sentinel", sentinel
 
     def __str__(self) -> str:
-        return "OreSat" + self.arg
+        if self.id < 100:
+            return "OreSat" + self.arg
+        else:
+            return self.arg
 
     def filename(self) -> str:
         """Returns a string safe to use in filenames and other restricted settings.
@@ -70,7 +74,7 @@ class Mission(MissionConsts, Enum):
     @classmethod
     def default(cls) -> Mission:
         """Returns the currently active mission"""
-        return cls.ORESAT0_5
+        return cls.SENTINEL
 
     @classmethod
     def from_string(cls, val: str) -> Mission:
