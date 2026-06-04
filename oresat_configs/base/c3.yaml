@@ -655,19 +655,24 @@ objects:
         data_type: uint16
         description: how many whole seconds to wait before attempting to store the current data.
         access_type: rw
-        default: 108  # 50 datapoints per 90 minute orbit.
+        default: 10  # 50 datapoints per 90 minute orbit.
       - subindex: 0x2
         name: data_per_file
         data_type: uint16
         description: how many gps positions to store in each file.
         access_type: rw
-        default: 50
+        default: 200
       - subindex: 0x3
         name: max_num_files
         data_type: uint16
         description: how many whole seconds to wait before attempting to store the current data.
         access_type: rw
-        default: 105 # ~7 days
+        default: 5
+      - subindex: 0x4
+        name: active
+        data_type: bool
+        description: is the gps recording active?
+        default: true
 
   - index: 0x4010
     name: hist_ecef_x
