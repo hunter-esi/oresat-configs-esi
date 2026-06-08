@@ -44,7 +44,7 @@ fields:
   - [battery_2, pack_2_temperature]
   # solar_1
   - [solar_1, output_power_avg]
-  - [solar_1, output_power_max]
+  - [solar_8, output_power_max]
   # solar_2
   - [solar_2, output_power_avg]
   - [solar_2, output_power_max]
@@ -53,13 +53,22 @@ fields:
   - [solar_3, output_power_max]
   # solar_4
   - [solar_4, output_power_avg]
-  - [solar_4, output_power_max]
+  - [solar_8, output_power_max]
   # solar_5
   - [solar_5, output_power_avg]
   - [solar_5, output_power_max]
   # solar_6
   - [solar_6, output_power_avg]
   - [solar_6, output_power_max]
+  # solar_7
+  - [solar_7, output_power_avg]
+  - [solar_8, output_power_max]
+  # solar_8
+  - [solar_8, output_power_avg]
+  - [solar_8, output_power_max]
+  # solar_9
+  - [solar_9, output_power_avg]
+  - [solar_9, output_power_max]
   # star_tracker_1
   - [star_tracker_1, status]
   # gps
