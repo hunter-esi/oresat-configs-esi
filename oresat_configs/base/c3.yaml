@@ -830,7 +830,7 @@ objects:
   - index: 0x4117
     name: mdb
     object_type: record
-    description: Interim mission database information. Should be replaced by a complete implementation later.
+    description: Interim mission database information. Should be replaced later.
     subindexes:
       - subindex: 0x1
         name: refresh_delay
@@ -855,8 +855,6 @@ objects:
         data_type: bool
         description: is the gps recording active?
         default: true
-
-
 
 
 tpdos:
