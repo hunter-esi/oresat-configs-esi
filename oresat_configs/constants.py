@@ -61,8 +61,7 @@ class Mission(MissionConsts, Enum):
     def __str__(self) -> str:
         if self.id < 100:
             return "OreSat" + self.arg
-        else:
-            return self.arg
+        return self.arg
 
     def filename(self) -> str:
         """Returns a string safe to use in filenames and other restricted settings.
