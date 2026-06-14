@@ -611,6 +611,7 @@ objects:
           nadir: 1
           min_drag: 2
           max_drag: 3
+        default: 0
 
       - subindex: 0x2
         name: control_mode
@@ -618,12 +619,14 @@ objects:
         description: adcs control mode
         access_type: rw
         value_descriptions:
-          rw_pointing: 0
-          mtb_pointing: 1
-          detumble: 2
-          thermal_detumble: 3
-          thermal_reorient: 4
-          thermal_spinup: 5
+          idle: 0
+          rw_pointing: 1
+          mtb_pointing: 2
+          detumble: 3
+          thermal_detumble: 4
+          thermal_reorient: 5
+          thermal_spinup: 6
+        default: 0
 
       - subindex: 0x3
         name: pointing_reference
@@ -633,12 +636,14 @@ objects:
         value_descriptions:
           selfie_cam: 0
           cirrus_flux: 1
+        default: 0
 
       - subindex: 0x4
         name: orbital_period
         data_type: float32
         description: the orbital period, in seconds
         access_type: rw
+        default: 1.0
         unit: s
 
       - subindex: 0x5
@@ -646,6 +651,7 @@ objects:
         data_type: float32
         description: the orbital inclination, in degrees
         access_type: rw
+        default: 1.0
         unit: degrees
 
       - subindex: 0x6
@@ -653,36 +659,42 @@ objects:
         data_type: float32
         description: max torque for LQR tuning (reaction wheel)
         access_type: rw
+        default: 0.001
 
       - subindex: 0x7
         name: lqr_max_error
         data_type: float32
         description: max torque error for LQR (reaction wheel)
         access_type: rw
+        default: 1.0
 
       - subindex: 0x8
         name: lqr_max_rate
         data_type: float32
         description: max torque rate for LQR (reaction wheel)
         access_type: rw
+        default: 0.09
 
       - subindex: 0x9
         name: lqr_max_input_mag
         data_type: float32
         access_type: rw
         description: max torque for LQR (magnetorquer)
+        default: 3.0
 
       - subindex: 0xa
         name: lqr_max_error_mag
         data_type: float32
         access_type: rw
         description: max torque error (magnetorquer)
+        default: 0.5
 
       - subindex: 0xb
         name: lqr_max_rate_mag
         data_type: float32
         access_type: rw
         description: max torque rate (magnetorquer)
+        default: 0.0003
 
       - subindex: 0xc
         name: variable_gain
@@ -696,6 +708,7 @@ objects:
         data_type: float32
         description: pointing target latitude
         access_type: rw
+        default: 78.231500
         unit: degrees
 
       - subindex: 0xe
@@ -703,6 +716,7 @@ objects:
         data_type: float32
         description: pointing target longitude
         access_type: rw
+        default: 15.411100
         unit: degrees
 
       - subindex: 0xf
@@ -710,7 +724,36 @@ objects:
         data_type: float32
         description: pointing target height
         access_type: rw
+        default: 488.0
         unit: m
+
+      - subindex: 0x10
+        name: update_interval
+        data_type: float32
+        description: adcs update interval
+        default: 0.1
+        unit: s
+
+      - subindex: 0x11
+        name: sat_inertia
+        data_type: octet_str
+        description: satellite intertia matrix
+        length: 36
+        default: 3c872ffa36ee926f383eb70a36ee926f3c82c2bd38025129383eb70a380251293bd5961f
+
+      - subindex: 0x12
+        name: rw_orientations
+        data_type: octet_str
+        description: reaction wheel orientations matrix
+        length: 48
+        default: 3f1cc4713f1cc471bf1cc471bf1cc4713f1cc471bf1cc471bf1cc4713f1cc471bf000000bf000000bf000000bf000000  # yamllint disable-line rule:line-length
+
+      - subindex: 0x13
+        name: rw_inertia
+        data_type: float32
+        description: reaction wheel moment of inertia about spin axis
+        default: 7.271e-6
+        unit: kg*m^2
 
   - index: 0x400f
     name: performance_override
@@ -718,17 +761,6 @@ objects:
     description: force the cpu governor to always be performance
     access_type: rw
     default: false
-
-  - index: 0x4010
-    name: adcs_rw_orientations
-    object_type: array
-    description: adcs reaction wheel orientations
-    generate_subindexes:
-      name: data
-      subindexes: fixed_length
-      length: 16
-      data_type: float32
-      access_type: rw
 
   - index: 0x4110
     name: hist_ecef_x
