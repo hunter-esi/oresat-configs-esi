@@ -248,6 +248,15 @@ def generate_xtce(config: OreSatConfig) -> ET.ElementTree:
                     "name": name,
                 },
             )
+            data_enc = ET.SubElement(
+                para_type,
+                "IntegerDataEncoding",
+                attrib={
+                    "byteOrder": "leastSignificantByteFirst",
+                    "encoding": "unsigned",
+                    "sizeInBits": str(DT_LEN[obj.data_type]),
+                },
+            )
             enum_list = ET.SubElement(para_type, "EnumerationList")
             for value, name in obj.value_descriptions.items():
                 ET.SubElement(
