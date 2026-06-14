@@ -170,7 +170,20 @@ class ConfigObject:
                 self.high_limit = DATA_TYPE_DEFAULTS[self.data_type].high_limit
 
         if self.data_type == 'octet_str':
-            self.default = bytes(self.length)
+            if self.default is not None:
+                if not isinstance(self.default, str):
+                    raise TypeError(f"{self.name} default value must be a hex string")
+                self.default = bytes.fromhex(self.default)
+                # Length = 1 is the default value. FIXME: maybe length default should be None?
+                # But then dealing with optionals everywhere ugh
+                if self.length != 1 and len(self.default) != self.length:
+                    raise ValueError(
+                        f"{self.name} length ({self.length}) and default "
+                        f"len({len(self.default)}) disagree"
+                    )
+                self.length = len(self.default)
+            else:
+                self.default = bytes(self.length)
         elif self.default is None:
             self.default = DATA_TYPE_DEFAULTS[self.data_type].default
 
