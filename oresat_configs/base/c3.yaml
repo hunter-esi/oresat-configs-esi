@@ -879,7 +879,7 @@ objects:
       - subindex: 0x3
         name: max_num_files
         data_type: uint16
-        description: how many whole seconds to wait before attempting to store the current data.
+        description: how many files to keep for later download.
         access_type: rw
         default: 5
       - subindex: 0x4
@@ -887,6 +887,18 @@ objects:
         data_type: bool
         description: is the gps recording active?
         default: true
+      - subindex: 0x5
+        name: active_timeout
+        data_type: uint32
+        description: how many seconds the mdb should keep the gps recording active.
+        access_type: rw
+        default: 300 # 5 minutes
+      - subindex: 0x6
+        name: idle_timeout
+        data_type: uint32
+        description: how many whole seconds to idle in between gps pulses
+        access_type: rw
+        default: 21600 # 6 hours
 
 
 tpdos:
