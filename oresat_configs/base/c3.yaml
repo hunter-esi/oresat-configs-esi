@@ -869,7 +869,7 @@ objects:
         data_type: uint16
         description: how many whole seconds to wait before attempting to store the current data.
         access_type: rw
-        default: 10  # 50 datapoints per 90 minute orbit.
+        default: 5
       - subindex: 0x2
         name: data_per_file
         data_type: uint16
@@ -881,7 +881,7 @@ objects:
         data_type: uint16
         description: how many files to keep for later download.
         access_type: rw
-        default: 5
+        default: 10
       - subindex: 0x4
         name: active
         data_type: bool
@@ -892,7 +892,7 @@ objects:
         data_type: uint32
         description: how many seconds the mdb should keep the gps recording active.
         access_type: rw
-        default: 300 # 5 minutes
+        default: 480 # 8 minutes
       - subindex: 0x6
         name: idle_timeout
         data_type: uint32
