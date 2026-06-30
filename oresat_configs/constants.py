@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from types import ModuleType
 
-from . import oresat0, oresat0_5, oresat1, sentinel
+from . import oresat0, oresat0_5, oresat1, osiris_b1, sentinel
 
 __all__ = [
     "Mission",
@@ -57,6 +57,7 @@ class Mission(MissionConsts, Enum):
     ORESAT0_5 = 2, "0.5", oresat0_5
     ORESAT1 = 3, "1", oresat1
     SENTINEL = 100, "sentinel", sentinel
+    OSIRIS_B1 = 101, "osiris_b1", osiris_b1
 
     def __str__(self) -> str:
         if self.id < 100:
@@ -73,7 +74,7 @@ class Mission(MissionConsts, Enum):
     @classmethod
     def default(cls) -> Mission:
         """Returns the currently active mission"""
-        return cls.SENTINEL
+        return cls.OSIRIS_B1
 
     @classmethod
     def from_string(cls, val: str) -> Mission:

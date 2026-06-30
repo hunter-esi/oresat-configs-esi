@@ -7,24 +7,24 @@ objects:
       - subindex: 0x1
         name: status
         data_type: int8
-        value_descriptions:
-          powerup: 1
-          standby: 2
-          data_ready: 3
-          shutdown: 4
-          off: 5
-          error: 255
+        # value_descriptions:
+        #   powerup: 1
+        #   standby: 2
+        #   data_ready: 3
+        #   shutdown: 4
+        #   off: 5
+        #   error: 255
         description: current state of the firmware. data_ready means that the c3 needs to open the UART connection ASAP.
         access_type: rw
 
       - subindex: 0x2
         name: powerup_state
         data_type: int8
-        value_descriptions:
-          boot: 1 # the firmware is still booting.
-          ocxo_timeout: 2 # the ocxo has been turned on. wait for it to warm up
-          sep_timeout: 3 # septentrio is booting. when done, turn on picozed and go to status -> standby.
-          error: 255
+        # value_descriptions:
+        #   boot: 1 # the firmware is still booting.
+        #   ocxo_timeout: 2 # the ocxo has been turned on. wait for it to warm up
+        #   sep_timeout: 3 # septentrio is booting. when done, turn on picozed and go to status -> standby.
+        #   error: 255
         description: current state of the power up procedure.
         access_type: rw
 
