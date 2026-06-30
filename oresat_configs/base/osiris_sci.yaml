@@ -1,0 +1,80 @@
+objects:
+  - index: 0x4000
+    name: status
+    description: current input, powerup state, etc.
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: status
+        data_type: int8
+        value_descriptions:
+          powerup: 1
+          standby: 2
+          data_ready: 3
+          shutdown: 4
+          off: 5
+          error: 255
+        description: current state of the firmware. data_ready means that the c3 needs to open the UART connection ASAP.
+        access_type: rw
+
+      - subindex: 0x2
+        name: powerup_state
+        data_type: int8
+        value_descriptions:
+          boot: 1 # the firmware is still booting.
+          ocxo_timeout: 2 # the ocxo has been turned on. wait for it to warm up
+          sep_timeout: 3 # septentrio is booting. when done, turn on picozed and go to status -> standby.
+          error: 255
+        description: current state of the power up procedure.
+        access_type: rw
+
+      - subindex: 0x3
+        name: current
+        data_type: uint16
+        description: current through 
+        access_type: ro
+        unit: mA
+
+  - index: 0x4001
+    name: gpio_state
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: ocxo_gpio_state
+        data_type: int8
+        description: the output state of the not_ocxo_en pin. 1 is off, 0 is on.
+        access_type: ro
+
+      - subindex: 0x2
+        name: sep_gpio_state
+        data_type: int8
+        description: the output state of the not_sep_en pin. 1 is off, 0 is on.
+        access_type: ro
+
+      - subindex: 0x3
+        name: pico_gpio_state
+        data_type: int8
+        description: the output state of the not_pico_en pin. 1 is off, 0 is on.
+        access_type: ro
+
+  - index: 0x4002
+    name: uart_ready
+    data_type: int8
+    description: have the c3 set this high when the uart line is ready.
+    access_type: wo
+
+tpdos:
+  - num: 1
+    fields:
+      - [status, status]
+      - [status, powerup_state]
+      - [status, current]
+    event_timer_ms: 10000
+
+  - num: 2
+    fields:
+      - [gpio_state, ocxo_gpio_state]
+      - [gpio_state, sep_gpio_state]
+      - [gpio_state, pico_gpio_state]
+      - [uart_ready]
+    event_timer_ms: 10000
