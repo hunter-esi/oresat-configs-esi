@@ -2,12 +2,12 @@ objects:
   - index: 0x4000
     name: status
     data_type: uint8
-    value_descriptions:
-      off: 0
-      booting: 1
-      on: 2
-      shutdown: 4
-      error: 255
+    # value_descriptions:
+    #   off: 0
+    #   booting: 1
+    #   on: 2
+    #   shutdown: 4
+    #   error: 255
     access_type: ro
     default: 0
 
@@ -26,12 +26,12 @@ objects:
       - subindex: 0x2
         name: powerup_state
         data_type: uint8
-        value_descriptions:
-          off: 0 # The software is still booting.
-          ocxo_timeout: 1 # the ocxo has been turned on. wait for it to warm up
-          sep_timeout: 2 # septentrio is booting. when done, turn on picozed and go to status -> standby.
-          on: 3
-          error: 255
+        # value_descriptions:
+        #   off: 0 # The software is still booting.
+        #   ocxo_timeout: 1 # the ocxo has been turned on. wait for it to warm up
+        #   sep_timeout: 2 # septentrio is booting. when done, turn on picozed and go to status -> standby.
+        #   on: 3
+        #   error: 255
         description: current state of the power up procedure.
         access_type: rw
 

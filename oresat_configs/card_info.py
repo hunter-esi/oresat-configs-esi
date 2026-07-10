@@ -23,7 +23,7 @@ class Card:
     node_id: int
     """CANopen node id."""
     processor: str
-    """Processor type; e.g.: "octavo", "stm32", "mcxn", or "none"."""
+    """Processor type; e.g.: "octavo", "thrdpty", "stm32", "mcxn", or "none"."""
     opd_address: int
     """OPD address."""
     opd_always_on: bool
@@ -49,7 +49,7 @@ class Card:
 
         basedir = resources.files(base)
 
-        if self.processor == "none":
+        if self.processor in ("none", "thrdpty"):
             common = None
         elif self.processor == "octavo":
             common = basedir / "sw_common.yaml"
