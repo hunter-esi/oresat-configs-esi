@@ -49,11 +49,11 @@ class Card:
 
         basedir = resources.files(base)
 
-        if self.processor in ("none", "thrdpty"):
+        if self.processor == "none":
             common = None
         elif self.processor == "octavo":
             common = basedir / "sw_common.yaml"
-        elif self.processor in ("stm32", "mcxn"):
+        elif self.processor in ("stm32", "mcxn", "thrdpty"):
             common = basedir / "fw_common.yaml"
         else:
             raise ValueError(f"Invalid processor {self.processor}")
