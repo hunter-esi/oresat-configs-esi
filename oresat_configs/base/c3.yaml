@@ -901,7 +901,7 @@ objects:
         default: 21600 # 6 hours
 
   - index: 0x4118
-    name: sdr
+    name: sdr_ctrl
     object_type: record
     description: Sband SDR information.
     subindexes:
