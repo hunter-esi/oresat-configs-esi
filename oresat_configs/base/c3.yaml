@@ -930,6 +930,18 @@ objects:
         description: current status of the sband radio
         access_type: ro
 
+  - index: 0x4200
+    name: payload
+    object_type: record
+    description: Payload service information
+    subindexes:
+      - subindex: 0x1
+        name: state
+        data_type: uint8
+        description: state for
+        access_type: rw
+        default: true
+
 
 tpdos:
   - num: 1  # time sync TPDO
