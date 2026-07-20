@@ -1,0 +1,7 @@
+
+  - index: 0x4000
+    name: instrument_current
+    data_type: uint16
+    description: Current passing through the OPD on the science card.
+    access_type: ro
+    unit: mA
