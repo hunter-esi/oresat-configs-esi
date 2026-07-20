@@ -1,4 +1,4 @@
-
+objects:
   - index: 0x4000
     name: instrument_current
     data_type: uint16

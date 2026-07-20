@@ -930,8 +930,8 @@ objects:
         description: current status of the sband radio
         access_type: ro
 
-  - index: 0x4200
-    name: payload
+  - index: 0x4120
+    name: payload_ctrl
     object_type: record
     description: Payload service information
     subindexes:
@@ -940,7 +940,11 @@ objects:
         data_type: uint8
         description: state for
         access_type: rw
-        default: true
+      - subindex: 0x2
+        name: enabled
+        data_type: bool
+        description: is the payload service enabled or is it disabled for leop/etc.
+        access_type: rw
 
 
 tpdos:
@@ -1018,5 +1022,5 @@ fram:
   - [uhf, rx_bytes]
   - [uhf, rx_packets]
   - [tx_control, enable]
-  - [payload, enabled]
-  - [payload, status]
+  - [payload_ctrl, enabled]
+  - [payload_ctrl, state]
