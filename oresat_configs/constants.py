@@ -37,12 +37,14 @@ class MissionConsts:
     paths: InitVar[ModuleType]
     cards: abc.Traversable = field(init=False)
     beacon: abc.Traversable = field(init=False)
+    leop_beacon: abc.Traversable = field(init=False)
     overlays: dict[str, abc.Traversable] = field(default_factory=dict, init=False)
 
     def __post_init__(self, paths: ModuleType) -> None:
         base = resources.files(paths)
         object.__setattr__(self, "cards", base / "cards.csv")
         object.__setattr__(self, "beacon", base / "beacon.yaml")
+        object.__setattr__(self, "leop_beacon", base / "leop_beacon.yaml")
         for path in base.iterdir():
             if path.name.endswith("_overlay.yaml"):
                 card = path.name.rsplit(sep="_", maxsplit=1)[0]

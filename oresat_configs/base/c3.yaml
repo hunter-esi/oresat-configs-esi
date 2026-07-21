@@ -501,6 +501,21 @@ objects:
         access_type: const
         # default set via beacon.yaml file
 
+      - subindex: 0xe
+        name: leop
+        data_type: bool
+        description: Should the beacon operate in leop mode? (use leop beacon for leop_bcn_timeout?)
+        access_type: rw
+        default: true
+
+      - subindex: 0xf
+        name: leop_bcn_timeout
+        data_type: uint32
+        description: If in leop, how long should the beacon be sent for?
+        access_type: rw
+        unit: ms
+        default: 10000
+
   - index: 0x400b
     name: rtc
     object_type: record
@@ -938,13 +953,15 @@ objects:
       - subindex: 0x1
         name: state
         data_type: uint8
-        description: state for
+        description: state of the payload service. Meaning is dependent on mission.
         access_type: rw
+        default: 0
       - subindex: 0x2
         name: enabled
         data_type: bool
         description: is the payload service enabled or is it disabled for leop/etc.
         access_type: rw
+        default: true
 
 
 tpdos:
