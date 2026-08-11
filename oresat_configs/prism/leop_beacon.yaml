@@ -3,7 +3,7 @@ revision: 0
 ax25:
   dest_callsign: SPACE
   dest_ssid: 0  # primary station
-  src_callsign: ESIOSR
+  src_callsign: ESIPSL
   src_ssid: 11  # balloons, aircraft, spacecraft, etc
   control: 0x3  # ui-frame
   pid: 0xf0  # no L3 protocol
@@ -35,13 +35,6 @@ fields:
   - [battery_1, pack_2_vbatt]
   - [battery_1, pack_2_current]
   - [battery_1, pack_2_temperature]
-  # battery_1
-  - [battery_2, pack_1_vbatt]
-  - [battery_2, pack_1_current]
-  - [battery_2, pack_1_temperature]
-  - [battery_2, pack_2_vbatt]
-  - [battery_2, pack_2_current]
-  - [battery_2, pack_2_temperature]
   # solar_1
   - [solar_1, output_power_avg]
   - [solar_1, output_power_max]
