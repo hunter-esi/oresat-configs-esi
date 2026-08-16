@@ -2,6 +2,6 @@ objects:
   - index: 0x4000
     name: instrument_current
     data_type: uint16
-    description: Current passing through the OPD on the science card.
+    description: Current passing through the OPD on the science card. Never defined, so placeholder.
     access_type: ro
     unit: mA
