@@ -29,7 +29,7 @@ objects:
         # value_descriptions:
         #   off: 0 # The software is still booting.
         #   ocxo_timeout: 1 # the ocxo has been turned on. wait for it to warm up
-        #   sep_timeout: 2 # septentrio is booting. when done, turn on picozed and go to status -> standby.
+        #   sep_timeout: 2 # septentrio is booting
         #   on: 3
         #   error: 255
         description: current state of the power up procedure.
@@ -70,7 +70,7 @@ objects:
         data_type: uint32
         description: the timeout state of the oxco
         access_type: ro
-      
+
       - subindex: 0x9
         name: pico_boot_mode
         data_type: uint8

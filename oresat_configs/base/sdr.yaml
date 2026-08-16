@@ -15,7 +15,7 @@ objects:
   - index: 0x4002
     name: tx_data
     data_type: octet_str
-    description: data to be transmitted. Preferred packets of 1099 bytes, greater will be chunked and framed # yamllint disable-line rule:line-length
+    description: data to be transmitted. Preferred packets of 1099 bytes, greater will be chunked and framed  # yamllint disable-line rule:line-length
     access_type: rw
 
   - index: 0x4003
@@ -31,7 +31,7 @@ objects:
         default: true
       - subindex: 0x2
         name: frequency_mhz
-        data_type: float32 # called real32 in the spec.
+        data_type: float32  # called real32 in the spec.
         description: frequency_mhz
         access_type: rw
         default: 2245.0
@@ -49,7 +49,7 @@ objects:
         default: 525000
       - subindex: 0x5
         name: scale_multiplier
-        data_type: float32 # called real32 in the spec.
+        data_type: float32  # called real32 in the spec.
         description: scale_multiplier
         access_type: rw
         default: 1.0
@@ -73,7 +73,7 @@ objects:
         default: 1
       - subindex: 0x9
         name: alpha
-        data_type: float32 # called real32 in the spec.
+        data_type: float32  # called real32 in the spec.
         description: alpha
         access_type: rw
         default: 0.5
@@ -103,17 +103,17 @@ objects:
         unit: mV
       - subindex: 0x4
         name: temperature_die
-        data_type: float32 # called real32 in the spec
+        data_type: float32  # called real32 in the spec
         description: temperature_die
         access_type: ro
       - subindex: 0x5
         name: temperature_board
-        data_type: float32 # called real32 in the spec
+        data_type: float32  # called real32 in the spec
         description: temperature_board
         access_type: ro
       - subindex: 0x6
         name: temperature_board_2
-        data_type: float32 # called real32 in the spec
+        data_type: float32  # called real32 in the spec
         description: temperature_board_2
         access_type: ro
       - subindex: 0x7
@@ -185,7 +185,7 @@ objects:
     subindexes:
       - subindex: 0x2
         name: frequency_mhz
-        data_type: float32 # called real32 in the spec.
+        data_type: float32  # called real32 in the spec.
         description: frequency_mhz
         access_type: rw
         default: 2100.0
@@ -203,7 +203,7 @@ objects:
         default: 525000
       - subindex: 0x5
         name: gain
-        data_type: float32 # called real32 in the spec.
+        data_type: float32  # called real32 in the spec.
         description: gain
         access_type: rw
         default: 25.0
@@ -227,7 +227,7 @@ objects:
         default: 1
       - subindex: 0x9
         name: alpha
-        data_type: float32 # called real32 in the spec.
+        data_type: float32  # called real32 in the spec.
         description: alpha
         access_type: rw
         default: 0.5
@@ -264,7 +264,7 @@ objects:
         access_type: ro
       - subindex: 0x6
         name: error_rate
-        data_type: float32 # called real32 in the spec
+        data_type: float32  # called real32 in the spec
         description: error_rate
         access_type: ro
 
