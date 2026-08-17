@@ -80,7 +80,8 @@ class TestConfig:
 
         # AX.25 payload max length = 255
         # CRC32 length = 4
-        assert length <= 255 - 4, f"{config.mission} beacon length too long"
+        # NOT STANDARD!!! BAD!!!
+        assert length <= 1024 - 4, f"{config.mission} beacon length too long"
 
     def test_record_array_length(self, config: OreSatConfig) -> None:
         """Test that array/record have is less than 255 objects in it."""

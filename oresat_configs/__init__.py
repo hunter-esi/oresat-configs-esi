@@ -49,12 +49,16 @@ class OreSatConfig:
 
         with as_file(self.mission.beacon) as path:
             beacon_config = BeaconConfig.from_yaml(path)
+        if self.mission.id > 100:
+            with as_file(self.mission.leop_beacon) as path:
+                leop_beacon_config = BeaconConfig.from_yaml(path)
         with as_file(self.mission.cards) as path:
             self.cards = cards_from_csv(path)
         self.configs = _load_configs(self.cards, self.mission.overlays)
         self.od_db = _gen_od_db(self.mission, self.cards, beacon_config, self.configs)
         c3_od = self.od_db["c3"]
         self.beacon_def = _gen_c3_beacon_defs(c3_od, beacon_config)
+        self.leop_beacon_def = _gen_c3_beacon_defs(c3_od, leop_beacon_config)
         self.fram_def = _gen_c3_fram_defs(c3_od, self.configs["c3"])
         self.fw_base_od = _gen_fw_base_od(self.mission)
 
