@@ -1,5 +1,15 @@
 extends: default
 
+ignore: |
+  oresat_configs/sentinel/beacon.yaml
+  oresat_configs/sentinel/leop_beacon.yaml
+  oresat_configs/beecon/beacon.yaml
+  oresat_configs/beecon/leop_beacon.yaml
+  oresat_configs/prism/beacon.yaml
+  oresat_configs/prism/leop_beacon.yaml
+  oresat_configs/osiris_b1/beacon.yaml
+  oresat_configs/osiris_b1/leop_beacon.yaml
+
 rules:
   document-start: disable
   line-length:

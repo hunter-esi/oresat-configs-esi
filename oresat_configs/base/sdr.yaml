@@ -1,0 +1,317 @@
+objects:
+  - index: 0x4000
+    name: sdr_power
+    data_type: uint8
+
+  - index: 0x4001
+    name: sdr_status
+    data_type: uint8
+    # value_descriptions:
+    #   'off': 0
+    #   boot: 1
+    #   standby: 2
+    #   error: 0xff
+
+  - index: 0x4002
+    name: tx_data
+    data_type: octet_str
+    description: data to be transmitted. Preferred packets of 1099 bytes, greater will be chunked and framed  # yamllint disable-line rule:line-length
+    access_type: rw
+
+  - index: 0x4003
+    name: tx_settings
+    object_type: record
+    description: tx settings defining the transmit path parameters
+    subindexes:
+      - subindex: 0x1
+        name: idle_enabled
+        data_type: bool
+        description: idle_enabled
+        access_type: rw
+        default: true
+      - subindex: 0x2
+        name: frequency_mhz
+        data_type: float32  # called real32 in the spec.
+        description: frequency_mhz
+        access_type: rw
+        default: 2245.0
+      - subindex: 0x3
+        name: samples_per_symbol
+        data_type: uint8
+        description: samples_per_symbol
+        access_type: rw
+        default: 8
+      - subindex: 0x4
+        name: sampling_rate
+        data_type: uint32
+        description: sampling_rate
+        access_type: rw
+        default: 525000
+      - subindex: 0x5
+        name: scale_multiplier
+        data_type: float32  # called real32 in the spec.
+        description: scale_multiplier
+        access_type: rw
+        default: 1.0
+      - subindex: 0x6
+        name: nrz_encoding
+        data_type: uint8
+        description: nrz_encoding
+        access_type: rw
+        default: 1
+      - subindex: 0x7
+        name: rs_enabled
+        data_type: bool
+        description: rs_enabled
+        access_type: rw
+        default: 1
+      - subindex: 0x8
+        name: scrambler_enabled
+        data_type: bool
+        description: scrambler_enabled
+        access_type: rw
+        default: 1
+      - subindex: 0x9
+        name: alpha
+        data_type: float32  # called real32 in the spec.
+        description: alpha
+        access_type: rw
+        default: 0.5
+
+  - index: 0x4004
+    name: sensor_data
+    object_type: record
+    description: sensor data
+    subindexes:
+      - subindex: 0x1
+        name: vcc_int_mv
+        data_type: int32
+        description: vcc_int_mv
+        access_type: ro
+        unit: mV
+      - subindex: 0x2
+        name: vcc_aux_mv
+        data_type: int32
+        description: vcc_aux_mv
+        access_type: ro
+        unit: mV
+      - subindex: 0x3
+        name: vcc_bram_mv
+        data_type: int32
+        description: vcc_bram_mv
+        access_type: ro
+        unit: mV
+      - subindex: 0x4
+        name: temperature_die
+        data_type: float32  # called real32 in the spec
+        description: temperature_die
+        access_type: ro
+      - subindex: 0x5
+        name: temperature_board
+        data_type: float32  # called real32 in the spec
+        description: temperature_board
+        access_type: ro
+      - subindex: 0x6
+        name: temperature_board_2
+        data_type: float32  # called real32 in the spec
+        description: temperature_board_2
+        access_type: ro
+      - subindex: 0x7
+        name: serial_number
+        data_type: str
+        description: serial_number
+        access_type: ro
+      - subindex: 0x8
+        name: part_number
+        data_type: str
+        description: part_number
+        access_type: ro
+      - subindex: 0x9
+        name: manufacture_date
+        data_type: str
+        description: manufacture_date
+        access_type: ro
+
+  - index: 0x4005
+    name: tx_data_statistics
+    object_type: record
+    description: tx data statistics
+    subindexes:
+      - subindex: 0x1
+        name: bit_rate
+        data_type: uint16
+        description: bit rate
+        access_type: ro
+      - subindex: 0x2
+        name: idle_packets
+        data_type: uint64
+        description: idle packets
+        access_type: ro
+      - subindex: 0x3
+        name: idle_bytes
+        data_type: uint64
+        description: idle bytes
+        access_type: ro
+      - subindex: 0x4
+        name: rx_packets
+        data_type: uint64
+        description: rx_packets
+        access_type: ro
+      - subindex: 0x5
+        name: rx_bytes
+        data_type: uint64
+        description: rx_bytes
+        access_type: ro
+      - subindex: 0x6
+        name: tx_packets
+        data_type: uint64
+        description: tx_packets
+        access_type: ro
+      - subindex: 0x7
+        name: tx_bytes
+        data_type: uint64
+        description: tx_bytes
+        access_type: ro
+      - subindex: 0x8
+        name: enable_pa
+        data_type: bool
+        description: enable_pa
+        access_type: ro
+
+  - index: 0x4006
+    name: rx_settings
+    object_type: record
+    description: tx settings defining the transmit path parameters
+    subindexes:
+      - subindex: 0x2
+        name: frequency_mhz
+        data_type: float32  # called real32 in the spec.
+        description: frequency_mhz
+        access_type: rw
+        default: 2100.0
+      - subindex: 0x3
+        name: samples_per_symbol
+        data_type: uint8
+        description: samples_per_symbol
+        access_type: rw
+        default: 8
+      - subindex: 0x4
+        name: sampling_rate
+        data_type: uint32
+        description: sampling_rate
+        access_type: rw
+        default: 525000
+      - subindex: 0x5
+        name: gain
+        data_type: float32  # called real32 in the spec.
+        description: gain
+        access_type: rw
+        default: 25.0
+      - subindex: 0x6
+        name: nrz_encoding
+        data_type: uint8
+        description: nrz_encoding
+        access_type: rw
+        default: 1
+      - subindex: 0x7
+        name: rs_enabled
+        data_type: bool
+        description: rs_enabled
+        access_type: rw
+        default: 1
+      - subindex: 0x8
+        name: scrambler_enabled
+        data_type: bool
+        description: scrambler_enabled
+        access_type: rw
+        default: 1
+      - subindex: 0x9
+        name: alpha
+        data_type: float32  # called real32 in the spec.
+        description: alpha
+        access_type: rw
+        default: 0.5
+
+  - index: 0x4007
+    name: rx_data_statistics
+    object_type: record
+    description: rx data statistics
+    subindexes:
+      - subindex: 0x1
+        name: bit_rate
+        data_type: uint16
+        description: bit rate
+        access_type: ro
+      - subindex: 0x2
+        name: idle_packets
+        data_type: uint32
+        description: idle packets
+        access_type: ro
+      - subindex: 0x3
+        name: idle_bytes
+        data_type: uint64
+        description: idle bytes
+        access_type: ro
+      - subindex: 0x4
+        name: rx_packets
+        data_type: uint32
+        description: rx_packets
+        access_type: ro
+      - subindex: 0x5
+        name: rx_bytes
+        data_type: uint64
+        description: rx_bytes
+        access_type: ro
+      - subindex: 0x6
+        name: error_rate
+        data_type: float32  # called real32 in the spec
+        description: error_rate
+        access_type: ro
+
+  - index: 0x4008
+    name: settings
+    object_type: record
+    description: settings
+    subindexes:
+      - subindex: 0x1
+        name: mode
+        data_type: uint8
+        description: mode
+        access_type: rw
+      - subindex: 0x2
+        name: running_status
+        data_type: uint8
+        description: running_status
+        access_type: ro
+
+  - index: 0x4009
+    name: tx_speedy_transfer
+    data_type: domain
+    description: no clue
+    access_type: wo
+
+  - index: 0x400A
+    name: config_persist
+    data_type: uint8
+    description: config_persist
+    access_type: wo
+    default: 1
+
+  - index: 0x400B
+    name: tx_send_cache
+    data_type: uint8
+    description: tx_send_cache
+    access_type: wo
+    default: 1
+
+  - index: 0x4010
+    name: rx_data
+    data_type: octet_str
+    description: rx_data
+    access_type: ro
+
+  - index: 0x4011
+    name: rx_data
+    data_type: domain
+    description: rx_speedy_transfer
+    access_type: ro

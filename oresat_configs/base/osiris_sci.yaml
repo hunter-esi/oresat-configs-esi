@@ -1,0 +1,102 @@
+objects:
+  - index: 0x4000
+    name: status
+    data_type: uint8
+    # value_descriptions:
+    #   off: 0
+    #   booting: 1
+    #   on: 2
+    #   shutdown: 4
+    #   error: 255
+    access_type: ro
+    default: 0
+
+  - index: 0x4001
+    name: powerup
+    description: current input, powerup state, etc.
+    object_type: record
+    subindexes:
+      - subindex: 0x1
+        name: enabled
+        data_type: uint8
+        description: determines if the firmware should attempt to boot the instrument.
+        access_type: rw
+        default: 0
+
+      - subindex: 0x2
+        name: powerup_state
+        data_type: uint8
+        # value_descriptions:
+        #   off: 0 # The software is still booting.
+        #   ocxo_timeout: 1 # the ocxo has been turned on. wait for it to warm up
+        #   sep_timeout: 2 # septentrio is booting
+        #   on: 3
+        #   error: 255
+        description: current state of the power up procedure.
+        access_type: rw
+
+      - subindex: 0x3
+        name: ocxo_gpio_state
+        data_type: uint8
+        description: the output state of the not_ocxo_en pin. 1 is off, 0 is on.
+        access_type: ro
+
+      - subindex: 0x4
+        name: ocxo_boot_timeout
+        data_type: uint32
+        description: the timeout state of the oxco
+        access_type: ro
+
+      - subindex: 0x5
+        name: sep_gpio_state
+        data_type: uint8
+        description: the output state of the not_sep_en pin. 1 is off, 0 is on.
+        access_type: ro
+
+      - subindex: 0x6
+        name: sep_boot_timeout
+        data_type: uint32
+        description: the timeout state of the oxco
+        access_type: ro
+
+      - subindex: 0x7
+        name: pico_gpio_state
+        data_type: uint8
+        description: the output state of the not_pico_en pin. 1 is off, 0 is on.
+        access_type: ro
+
+      - subindex: 0x8
+        name: pico_boot_timeout
+        data_type: uint32
+        description: the timeout state of the oxco
+        access_type: ro
+
+      - subindex: 0x9
+        name: pico_boot_mode
+        data_type: uint8
+        description: determines if the bootloadin pins on the picozd are raised high or low.
+        access_type: rw
+        default: 1
+
+  - index: 0x4002
+    name: instrument_current
+    data_type: uint16
+    description: Current passing through the OPD on the science card.
+    access_type: ro
+    unit: mA
+
+tpdos:
+  - num: 1
+    fields:
+      - [status]
+      - [powerup, enabled]
+      - [powerup, powerup_state]
+      - [powerup, ocxo_gpio_state]
+      - [powerup, sep_gpio_state]
+      - [powerup, pico_gpio_state]
+    event_timer_ms: 10000
+
+  - num: 2
+    fields:
+      - [instrument_current]
+    event_timer_ms: 10000

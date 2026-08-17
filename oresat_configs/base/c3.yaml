@@ -84,7 +84,7 @@ objects:
         data_type: uint16
         description: timeout before trying to deploy the antennas
         access_type: const
-        default: 300  # 5 minutes
+        default: 3600  # 1 hour
         unit: s
 
       - subindex: 0x4
@@ -155,7 +155,7 @@ objects:
         data_type: uint32
         description: timeout between monopole and helical deployments for an attempt
         access_type: const
-        default: 5
+        default: 15
         unit: s
 
   - index: 0x4006
@@ -515,6 +515,21 @@ objects:
         access_type: const
         # default set via beacon.yaml file
 
+      - subindex: 0xe
+        name: leop
+        data_type: bool
+        description: Should the beacon operate in leop mode? (use leop beacon for leop_bcn_timeout?)
+        access_type: rw
+        default: true
+
+      - subindex: 0xf
+        name: leop_bcn_timeout
+        data_type: uint32
+        description: If in leop, how long should the beacon be sent for?
+        access_type: rw
+        unit: ms
+        default: 10000
+
   - index: 0x400b
     name: rtc
     object_type: record
@@ -776,6 +791,193 @@ objects:
     access_type: rw
     default: false
 
+  - index: 0x4110
+    name: hist_ecef_x
+    object_type: array
+    description: historical gps x coordinate in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_x
+      length: 32
+      data_type: int32
+      description: ecef x coordinate
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4111
+    name: hist_ecef_y
+    object_type: array
+    description: historical gps y coordinate in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_y
+      length: 32
+      data_type: int32
+      description: ecef y coordinate
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4112
+    name: hist_ecef_z
+    object_type: array
+    description: historical gps z coordinate in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_z
+      length: 32
+      data_type: int32
+      description: ecef z coordinate
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4113
+    name: hist_ecef_vx
+    object_type: array
+    description: historical gps x velocity in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_vx
+      length: 32
+      data_type: int32
+      description: ecef x velocity
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4114
+    name: hist_ecef_vy
+    object_type: array
+    description: historical gps y velocity in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_vy
+      length: 32
+      data_type: int32
+      description: ecef y velocity
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4115
+    name: hist_ecef_vz
+    object_type: array
+    description: historical gps z velocity in ecef
+    generate_subindexes:
+      subindexes: fixed_length
+      name: ecef_vz
+      length: 32
+      data_type: int32
+      description: ecef z velocity
+      access_type: ro
+      unit: km
+      scale_factor: 0.00001  # cm to km
+
+  - index: 0x4116
+    name: hist_unix_time
+    object_type: array
+    description: unix time of the associated gps data.
+    generate_subindexes:
+      subindexes: fixed_length
+      name: time
+      length: 32
+      data_type: int32
+      description: gps data timestamp
+      access_type: ro
+      unit: s
+
+  - index: 0x4117
+    name: mdb
+    object_type: record
+    description: Interim mission database information. Should be replaced later.
+    subindexes:
+      - subindex: 0x1
+        name: refresh_delay
+        data_type: uint16
+        description: how many whole seconds to wait before attempting to store the current data.
+        access_type: rw
+        default: 5
+      - subindex: 0x2
+        name: data_per_file
+        data_type: uint16
+        description: how many gps positions to store in each file.
+        access_type: rw
+        default: 200
+      - subindex: 0x3
+        name: max_num_files
+        data_type: uint16
+        description: how many files to keep for later download.
+        access_type: rw
+        default: 10
+      - subindex: 0x4
+        name: active
+        data_type: bool
+        description: is the gps recording active?
+        default: true
+      - subindex: 0x5
+        name: active_timeout
+        data_type: uint32
+        description: how many seconds the mdb should keep the gps recording active.
+        access_type: rw
+        default: 480  # 8 minutes
+      - subindex: 0x6
+        name: idle_timeout
+        data_type: uint32
+        description: how many whole seconds to idle in between gps pulses
+        access_type: rw
+        default: 21600  # 6 hours
+
+  - index: 0x4118
+    name: sdr_ctrl
+    object_type: record
+    description: Sband SDR information.
+    subindexes:
+      - subindex: 0x1
+        name: sband_downlink
+        data_type: bool
+        description: should we try to send EDL responses through the sband (if it is on and seems to be working)?  # yamllint disable-line rule:line-length
+        access_type: rw
+        default: true
+      - subindex: 0x2
+        name: should_enable
+        data_type: bool
+        description: if true, the radio service will attempt to power on the sband (if it is not on). if false, try to power it off (if it is not already)  # yamllint disable-line rule:line-length
+        access_type: rw
+        default: false
+      - subindex: 0x3
+        name: enable_timeout
+        data_type: uint16
+        description: The timeout for automatically disabling the S-band after it has been turned on.
+        access_type: rw
+        unit: s
+        default: 1200  # 20 minutes
+      - subindex: 0x4
+        name: status
+        data_type: uint8
+        description: current status of the sband radio
+        access_type: ro
+
+  - index: 0x4120
+    name: payload_ctrl
+    object_type: record
+    description: Payload service information
+    subindexes:
+      - subindex: 0x1
+        name: state
+        data_type: uint8
+        description: state of the payload service. Meaning is dependent on mission.
+        access_type: rw
+        default: 0
+      - subindex: 0x2
+        name: enabled
+        data_type: bool
+        description: is the payload service enabled or is it disabled for leop/etc.
+        access_type: rw
+        default: true
+
+
 tpdos:
   - num: 1  # time sync TPDO
     fields:
@@ -852,3 +1054,5 @@ fram:
   - [uhf, rx_packets]
   - [tx_control, enable]
   - [edl, cfdp_seq_num]
+  - [payload_ctrl, enabled]
+  - [payload_ctrl, state]
