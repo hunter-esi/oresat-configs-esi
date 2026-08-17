@@ -1,18 +1,15 @@
 """
-OreSat OD constants
+OreSat OD constants.
 
 Seperate from __init__.py to avoid cirular imports.
 """
 
-from __future__ import annotations
-
 from dataclasses import InitVar, dataclass, field
 from enum import Enum, unique
 from importlib import abc, resources
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from types import ModuleType
+from importlib.metadata import PackageNotFoundError, version
+from types import ModuleType
+from typing import Self
 
 from . import beecon, oresat0, oresat0_5, oresat1, osiris_b1, prism, sentinel
 
@@ -23,14 +20,14 @@ __all__ = [
 ]
 
 try:
-    from ._version import version as __version__
-except ImportError:
+    __version__ = version("oresat-configs")
+except PackageNotFoundError:
     __version__ = "0.0.0"  # package is not installed
 
 
 @dataclass(frozen=True)
 class MissionConsts:
-    """A specific set of constants associated with an OreSat Mission"""
+    """A specific set of constants associated with an OreSat Mission."""
 
     id: int
     arg: str
@@ -53,7 +50,7 @@ class MissionConsts:
 
 @unique
 class Mission(MissionConsts, Enum):
-    """Each OreSat Mission and constant configuration data associated with them"""
+    """Each OreSat Mission and constant configuration data associated with them."""
 
     ORESAT0 = 1, "0", oresat0
     ORESAT0_5 = 2, "0.5", oresat0_5
@@ -69,7 +66,7 @@ class Mission(MissionConsts, Enum):
         return self.arg
 
     def filename(self) -> str:
-        """Returns a string safe to use in filenames and other restricted settings.
+        """Return a string safe to use in filenames and other restricted settings.
 
         All lower case, dots replaced with underscores.
         """
@@ -81,11 +78,11 @@ class Mission(MissionConsts, Enum):
         return cls.BEECON
 
     @classmethod
-    def from_string(cls, val: str) -> Mission:
-        """Fetches the Mission associated with an appropriate string
+    def from_string(cls, val: str) -> Self:
+        """Fetch the Mission associated with an appropriate string.
 
         Appropriate strings are the arg (0, 0.5, ...), optionally prefixed with
-        OreSat or oresat
+        OreSat or oresat.
         """
         arg = val.lower().removeprefix("oresat")
         for m in cls:
@@ -94,8 +91,8 @@ class Mission(MissionConsts, Enum):
         raise ValueError(f"invalid oresat mission: {val}")
 
     @classmethod
-    def from_id(cls, val: int) -> Mission:
-        """Fetches the Mission associated with an appropriate ID
+    def from_id(cls, val: int) -> Self:
+        """Fetch the Mission associated with an appropriate ID.
 
         Appropriate IDs are integers 1, 2, ... that corespond to the specific
         mission. Note that these are not the number in the Satellite name.
