@@ -768,7 +768,7 @@ objects:
         data_type: octet_str
         description: satellite intertia matrix
         length: 36
-        default: 3c872ffa36ee926f383eb70a36ee926f3c82c2bd38025129383eb70a380251293bd5961f
+        default: 3ce5604236a7c5ac3851b71736a7c5ac3cbc6a7f3851b7173851b7173851b7173c343958  # BEECON
 
       - subindex: 0x12
         name: rw_orientations
@@ -898,7 +898,7 @@ objects:
         data_type: uint16
         description: how many whole seconds to wait before attempting to store the current data.
         access_type: rw
-        default: 5
+        default: 2
       - subindex: 0x2
         name: data_per_file
         data_type: uint16

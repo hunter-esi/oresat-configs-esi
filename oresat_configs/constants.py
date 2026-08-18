@@ -73,7 +73,7 @@ class Mission(MissionConsts, Enum):
         return str(self).lower().replace(".", "_")
 
     @classmethod
-    def default(cls) -> Mission:
+    def default(cls) -> Self:
         """Returns the currently active mission"""
         return cls.BEECON
 

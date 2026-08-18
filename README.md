@@ -1,6 +1,6 @@
-# OreSat Configs
+# OreSat Configs, ESI Fork.
 
-Firmware/software configurations for OreSat missions.
+Firmware/software configurations for ESI missions using OreSat bus.
 
 Includes:
 
