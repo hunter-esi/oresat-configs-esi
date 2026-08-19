@@ -915,7 +915,7 @@ objects:
         name: active
         data_type: bool
         description: is the gps recording active?
-        default: true
+        default: false
       - subindex: 0x5
         name: active_timeout
         data_type: uint32
