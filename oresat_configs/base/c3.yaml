@@ -768,7 +768,7 @@ objects:
         data_type: octet_str
         description: satellite intertia matrix
         length: 36
-        default: 3ce5604236a7c5ac3851b71736a7c5ac3cbc6a7f3851b7173851b7173851b7173c343958  # BEECON
+        default: 3cfdf3b636a7c5ac3851b71736a7c5ac3ccccccd3851b7173851b7173851b7173c449ba6  # PRISM
 
       - subindex: 0x12
         name: rw_orientations
