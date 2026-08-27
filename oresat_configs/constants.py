@@ -11,7 +11,7 @@ from importlib.metadata import PackageNotFoundError, version
 from types import ModuleType
 from typing import Self
 
-from . import beecon, oresat0, oresat0_5, oresat1, osiris_b1, prism, sentinel
+from . import beecon, oresat0, oresat0_5, oresat1, osiris_b1, osiris_c, osiris_d, prism, sentinel
 
 __all__ = [
     "Mission",
@@ -59,6 +59,8 @@ class Mission(MissionConsts, Enum):
     OSIRIS_B1 = 101, "osiris_b1", osiris_b1
     PRISM = 102, "prism", prism
     BEECON = 103, "beecon", beecon
+    OSIRIS_C = 104, "osiris_c", osiris_c
+    OSIRIS_D = 105, "osiris_d", osiris_d
 
     def __str__(self) -> str:
         if self.id < 100:
