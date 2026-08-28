@@ -672,7 +672,7 @@ objects:
         data_type: float32
         description: the orbital period, in seconds
         access_type: rw
-        default: 1.0
+        default: 5680
         unit: s
 
       - subindex: 0x5
@@ -680,7 +680,7 @@ objects:
         data_type: float32
         description: the orbital inclination, in degrees
         access_type: rw
-        default: 1.0
+        default: 98.7
         unit: degrees
 
       - subindex: 0x6
@@ -768,7 +768,7 @@ objects:
         data_type: octet_str
         description: satellite intertia matrix
         length: 36
-        default: 3cfdf3b636a7c5ac3851b71736a7c5ac3ccccccd3851b7173851b7173851b7173c449ba6  # PRISM
+        default: 3d6147aeba83126f3851b717ba83126f3d3851ec3851b7173851b7173851b7173cac0831  # C and D
 
       - subindex: 0x12
         name: rw_orientations
