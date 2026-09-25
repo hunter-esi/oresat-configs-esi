@@ -77,7 +77,7 @@ class Mission(MissionConsts, Enum):
     @classmethod
     def default(cls) -> Self:
         """Returns the currently active mission"""
-        return cls.OSIRIS_C
+        return cls.OSIRIS_B1
 
     @classmethod
     def from_string(cls, val: str) -> Self:
